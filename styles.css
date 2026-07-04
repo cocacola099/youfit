@@ -1,12 +1,12 @@
 :root {
-  --bg: #0e0f11;
-  --bg-alt: #17181b;
-  --card: #1e2023;
-  --text: #f4f4f5;
-  --text-muted: #a5a7ad;
-  --accent: #ff4d2e;
-  --accent-dark: #e0391b;
-  --border: #2a2c30;
+  --bg: #ffffff;
+  --bg-alt: #f6f4f1;
+  --card: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #62605c;
+  --accent: #b8461e;
+  --accent-dark: #973715;
+  --border: #e6e2db;
   --radius: 10px;
 }
 
@@ -43,14 +43,14 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   font-weight: 600;
   border: 1px solid transparent;
-  transition: transform .15s ease, background .15s ease;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
   white-space: nowrap;
 }
 .btn:active { transform: scale(0.97); }
 .btn-primary { background: var(--accent); color: #fff; }
 .btn-primary:hover { background: var(--accent-dark); }
 .btn-outline { border-color: var(--border); color: var(--text); }
-.btn-outline:hover { border-color: var(--accent); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 .btn-lg { padding: 15px 28px; font-size: 1.05rem; }
 
 .zalo-icon {
@@ -71,7 +71,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(14, 15, 17, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -105,7 +105,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero {
   background:
-    radial-gradient(ellipse at top right, rgba(255, 77, 46, 0.18), transparent 55%),
+    radial-gradient(ellipse at top right, rgba(184, 70, 30, 0.08), transparent 55%),
     linear-gradient(180deg, var(--bg-alt), var(--bg));
   padding: 90px 0 70px;
   text-align: center;
@@ -138,6 +138,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 26px;
+  box-shadow: 0 1px 2px rgba(20, 18, 14, 0.04);
 }
 .about-card h3 { color: var(--accent); font-size: 1.05rem; }
 .about-card p { margin: 0; font-size: 0.95rem; }
@@ -173,7 +174,6 @@ a { color: inherit; text-decoration: none; }
   height: 100%;
   border: 0;
   display: block;
-  filter: grayscale(0.2) invert(0.92) hue-rotate(180deg) contrast(0.9);
 }
 
 .contact { text-align: center; background: var(--bg-alt); }
