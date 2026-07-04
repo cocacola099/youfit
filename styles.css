@@ -208,11 +208,6 @@ a { color: inherit; text-decoration: none; }
   stroke: var(--border);
   stroke-width: 1;
 }
-.chart-refline {
-  stroke: var(--border);
-  stroke-width: 1;
-  stroke-dasharray: 4 4;
-}
 .chart-axis-label {
   fill: var(--text-muted);
   font-size: 13px;
@@ -230,12 +225,9 @@ a { color: inherit; text-decoration: none; }
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: stroke-dashoffset 1.6s ease;
 }
 .line-fat { stroke: var(--chart-fat); }
-.line-muscle { stroke: var(--chart-muscle); transition-delay: .15s; }
+.line-muscle { stroke: var(--chart-muscle); }
 
 .chart-marker circle {
   stroke: var(--bg);
@@ -245,17 +237,17 @@ a { color: inherit; text-decoration: none; }
   transform-origin: center;
   transform: scale(0.4);
   transition: opacity .4s ease, transform .4s ease;
-  transition-delay: 1.5s;
+  transition-delay: 4.9s;
 }
 .marker-fat circle { fill: var(--chart-fat); }
-.marker-muscle circle { fill: var(--chart-muscle); transition-delay: 1.65s; }
+.marker-muscle circle { fill: var(--chart-muscle); }
 
 .progress-chart.in-view .chart-line { stroke-dashoffset: 0; }
 .progress-chart.in-view .chart-marker circle { opacity: 1; transform: scale(1); }
 .progress-chart.in-view .chart-end-label {
   opacity: 1;
   transition: opacity .4s ease;
-  transition-delay: 1.7s;
+  transition-delay: 5.1s;
 }
 .chart-end-label { opacity: 0; }
 

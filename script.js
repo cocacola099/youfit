@@ -67,17 +67,39 @@ document.querySelectorAll(".carousel").forEach(function (carousel) {
 
 var progressChart = document.querySelector(".progress-chart");
 if (progressChart) {
+  var chartLines = Array.prototype.slice.call(progressChart.querySelectorAll(".chart-line"));
+  chartLines.forEach(function (line) {
+    var length = line.getTotalLength();
+    line.style.strokeDasharray = length;
+    line.style.strokeDashoffset = length;
+  });
+  // Force the hidden state to paint before transitions are enabled, otherwise
+  // the browser animates INTO this initial value instead of out of it.
+  void progressChart.getBoundingClientRect();
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      chartLines.forEach(function (line) {
+        line.style.transition = "stroke-dashoffset 5s linear";
+      });
+    });
+  });
+
+  function revealChart() {
+    progressChart.classList.add("in-view");
+    chartLines.forEach(function (line) { line.style.strokeDashoffset = "0"; });
+  }
+
   if ("IntersectionObserver" in window) {
     var chartObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          progressChart.classList.add("in-view");
+          revealChart();
           chartObserver.unobserve(progressChart);
         }
       });
     }, { threshold: 0.4 });
     chartObserver.observe(progressChart);
   } else {
-    progressChart.classList.add("in-view");
+    revealChart();
   }
 }
