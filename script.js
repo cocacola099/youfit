@@ -4,45 +4,63 @@ document.querySelectorAll(".carousel").forEach(function (carousel) {
   var prevBtn = carousel.querySelector(".carousel-btn.prev");
   var nextBtn = carousel.querySelector(".carousel-btn.next");
   var dotsWrap = carousel.parentElement.querySelector(".carousel-dots");
+  var dots = [];
 
-  slides.forEach(function (_, i) {
-    var dot = document.createElement("button");
-    dot.type = "button";
-    dot.setAttribute("aria-label", "Đi tới ảnh " + (i + 1));
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", function () {
-      slides[i].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-    });
-    dotsWrap.appendChild(dot);
-  });
-  var dots = Array.prototype.slice.call(dotsWrap.children);
+  function visibleCount() {
+    var slideWidth = slides[0].getBoundingClientRect().width;
+    if (!slideWidth) return 1;
+    return Math.max(1, Math.round(track.clientWidth / slideWidth));
+  }
 
-  function activeIndex() {
-    var center = track.scrollLeft + track.clientWidth / 2;
-    var closest = 0;
-    var closestDist = Infinity;
-    slides.forEach(function (slide, i) {
-      var dist = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
-      if (dist < closestDist) { closestDist = dist; closest = i; }
-    });
-    return closest;
+  function pageCount() {
+    return Math.max(1, Math.ceil(slides.length / visibleCount()));
+  }
+
+  function currentPage() {
+    var width = track.clientWidth || 1;
+    return Math.round(track.scrollLeft / width);
+  }
+
+  function goToPage(page) {
+    var max = pageCount() - 1;
+    page = Math.max(0, Math.min(max, page));
+    track.scrollTo({ left: page * track.clientWidth, behavior: "smooth" });
   }
 
   function updateDots() {
-    var i = activeIndex();
-    dots.forEach(function (d, idx) { d.classList.toggle("active", idx === i); });
+    var page = currentPage();
+    dots.forEach(function (d, i) { d.classList.toggle("active", i === page); });
   }
+
+  function buildDots() {
+    dotsWrap.innerHTML = "";
+    dots = [];
+    var count = pageCount();
+    for (var p = 0; p < count; p++) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Đi tới nhóm ảnh " + (p + 1));
+      (function (page) {
+        dot.addEventListener("click", function () { goToPage(page); });
+      })(p);
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    }
+    updateDots();
+  }
+
+  var resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildDots, 150);
+  });
 
   track.addEventListener("scroll", function () {
     window.requestAnimationFrame(updateDots);
   });
 
-  prevBtn.addEventListener("click", function () {
-    var i = Math.max(0, activeIndex() - 1);
-    slides[i].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  });
-  nextBtn.addEventListener("click", function () {
-    var i = Math.min(slides.length - 1, activeIndex() + 1);
-    slides[i].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  });
+  prevBtn.addEventListener("click", function () { goToPage(currentPage() - 1); });
+  nextBtn.addEventListener("click", function () { goToPage(currentPage() + 1); });
+
+  buildDots();
 });

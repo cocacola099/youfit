@@ -182,22 +182,28 @@ a { color: inherit; text-decoration: none; }
 
 .carousel {
   position: relative;
-  max-width: 720px;
   margin: 40px auto 0;
 }
 .carousel-track {
   display: flex;
+  gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  border-radius: var(--radius);
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-slide {
-  flex: 0 0 100%;
-  scroll-snap-align: center;
+  flex: 0 0 calc((100% - 32px) / 3);
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .carousel-slide { flex: 0 0 calc((100% - 16px) / 2); }
+}
+@media (max-width: 560px) {
+  .carousel-slide { flex: 0 0 100%; }
 }
 .carousel-slide img {
   width: 100%;
