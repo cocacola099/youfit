@@ -144,7 +144,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.68) 60%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.85) 60%, var(--bg) 100%);
   z-index: -1;
 }
 .hero-inner { max-width: 780px; margin: 0 auto; }
