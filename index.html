@@ -7,6 +7,7 @@
 <meta name="description" content="Youfit Private Fitness - Phòng tập gym riêng tư tại Láng Hạ, Ba Đình, Hà Nội. Nhắn Zalo để đặt lịch tập ngay.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
 <link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
@@ -62,12 +63,17 @@
   <section id="gallery" class="section gallery">
     <div class="container">
       <h2>Không gian &amp; Buổi tập</h2>
-      <div class="gallery-grid">
-        <img src="images/squat-male.webp" alt="Học viên tập squat với thanh đòn tại Youfit Private Fitness" loading="lazy">
-        <img src="images/trainer-assist.webp" alt="Huấn luyện viên hướng dẫn học viên tập kéo cáp" loading="lazy">
-        <img src="images/squat-female-back.webp" alt="Học viên nữ tập squat" loading="lazy">
-        <img src="images/squat-female-front.webp" alt="Học viên nữ tập squat với tạ đòn" loading="lazy">
+      <div class="carousel">
+        <button type="button" class="carousel-btn prev" aria-label="Ảnh trước">&#8249;</button>
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="images/squat-male.webp" alt="Học viên tập squat với thanh đòn tại Youfit Private Fitness" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/trainer-assist.webp" alt="Huấn luyện viên hướng dẫn học viên tập kéo cáp" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/squat-female-back.webp" alt="Học viên nữ tập squat" loading="lazy"></div>
+          <div class="carousel-slide"><img src="images/squat-female-front.webp" alt="Học viên nữ tập squat với tạ đòn" loading="lazy"></div>
+        </div>
+        <button type="button" class="carousel-btn next" aria-label="Ảnh sau">&#8250;</button>
       </div>
+      <div class="carousel-dots"></div>
     </div>
   </section>
 
