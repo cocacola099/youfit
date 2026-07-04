@@ -10,6 +10,7 @@
   --radius: 10px;
   --chart-muscle: #b8461e;
   --chart-fat: #1a6fae;
+  --zalo-blue: #0068ff;
 }
 
 * { box-sizing: border-box; }
@@ -66,12 +67,10 @@ a { color: inherit; text-decoration: none; }
   width: 22px;
   height: 22px;
   border-radius: 6px;
-  background: #fff;
-  color: var(--accent);
-  font-weight: 800;
-  font-size: 0.85rem;
+  background: var(--zalo-blue);
+  flex-shrink: 0;
 }
-.btn-outline .zalo-icon { background: var(--accent); color: #fff; }
+.zalo-icon svg { width: 14px; height: 14px; display: block; }
 
 .site-header {
   position: sticky;
