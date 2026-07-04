@@ -8,6 +8,8 @@
   --accent-dark: #973715;
   --border: #e6e2db;
   --radius: 10px;
+  --chart-muscle: #b8461e;
+  --chart-fat: #1a6fae;
 }
 
 * { box-sizing: border-box; }
@@ -173,6 +175,111 @@ a { color: inherit; text-decoration: none; }
 
 .section { padding: 70px 0; }
 .about { background: var(--bg-alt); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.progress-caption {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+}
+
+.chart-wrap {
+  max-width: 680px;
+  margin: 32px auto 0;
+}
+.progress-chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.chart-baseline {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+.chart-refline {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+.chart-axis-label {
+  fill: var(--text-muted);
+  font-size: 13px;
+  font-family: inherit;
+}
+.chart-end-label {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  dominant-baseline: middle;
+}
+.chart-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 1.6s ease;
+}
+.line-fat { stroke: var(--chart-fat); }
+.line-muscle { stroke: var(--chart-muscle); transition-delay: .15s; }
+
+.chart-marker circle {
+  stroke: var(--bg);
+  stroke-width: 2;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.4);
+  transition: opacity .4s ease, transform .4s ease;
+  transition-delay: 1.5s;
+}
+.marker-fat circle { fill: var(--chart-fat); }
+.marker-muscle circle { fill: var(--chart-muscle); transition-delay: 1.65s; }
+
+.progress-chart.in-view .chart-line { stroke-dashoffset: 0; }
+.progress-chart.in-view .chart-marker circle { opacity: 1; transform: scale(1); }
+.progress-chart.in-view .chart-end-label {
+  opacity: 1;
+  transition: opacity .4s ease;
+  transition-delay: 1.7s;
+}
+.chart-end-label { opacity: 0; }
+
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.swatch-muscle { background: var(--chart-muscle); }
+.swatch-fat { background: var(--chart-fat); }
 
 .about-grid {
   display: grid;

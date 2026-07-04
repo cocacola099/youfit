@@ -64,3 +64,20 @@ document.querySelectorAll(".carousel").forEach(function (carousel) {
 
   buildDots();
 });
+
+var progressChart = document.querySelector(".progress-chart");
+if (progressChart) {
+  if ("IntersectionObserver" in window) {
+    var chartObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          progressChart.classList.add("in-view");
+          chartObserver.unobserve(progressChart);
+        }
+      });
+    }, { threshold: 0.4 });
+    chartObserver.observe(progressChart);
+  } else {
+    progressChart.classList.add("in-view");
+  }
+}

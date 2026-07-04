@@ -44,6 +44,60 @@
     </div>
   </section>
 
+  <section id="progress" class="section progress">
+    <div class="container">
+      <h2>Tiến bộ sau 3 tháng tập luyện</h2>
+      <p class="progress-caption">Ví dụ minh hoạ về thay đổi thành phần cơ thể khi tập luyện đều đặn cùng huấn luyện viên — mỡ cơ thể giảm, khối cơ tăng.</p>
+
+      <div class="chart-wrap">
+        <svg class="progress-chart" viewBox="0 0 640 300" role="img" aria-labelledby="progress-title progress-desc" preserveAspectRatio="xMidYMid meet">
+          <title id="progress-title">Biểu đồ thay đổi mỡ cơ thể và khối cơ theo 3 tháng</title>
+          <desc id="progress-desc">Mỡ cơ thể giảm dần từ 100% xuống 82% so với tháng 1; khối cơ tăng dần từ 100% lên 114% so với tháng 1.</desc>
+
+          <line class="chart-baseline" x1="60" y1="260" x2="580" y2="260"></line>
+          <line class="chart-refline" x1="60" y1="150" x2="580" y2="150"></line>
+          <text class="chart-axis-label" x="46" y="154" text-anchor="end">100%</text>
+
+          <text class="chart-axis-label" x="60" y="284" text-anchor="middle">Tháng 1</text>
+          <text class="chart-axis-label" x="320" y="284" text-anchor="middle">Tháng 2</text>
+          <text class="chart-axis-label" x="580" y="284" text-anchor="middle">Tháng 3</text>
+
+          <path class="chart-line line-fat" d="M60,150 L320,194 L580,249"></path>
+          <path class="chart-line line-muscle" d="M60,150 L320,117 L580,73"></path>
+
+          <g class="chart-marker marker-fat">
+            <circle cx="60" cy="150" r="5"><title>Mỡ cơ thể — Tháng 1: 100%</title></circle>
+            <circle cx="320" cy="194" r="5"><title>Mỡ cơ thể — Tháng 2: 92%</title></circle>
+            <circle cx="580" cy="249" r="5"><title>Mỡ cơ thể — Tháng 3: 82%</title></circle>
+          </g>
+          <g class="chart-marker marker-muscle">
+            <circle cx="60" cy="150" r="5"><title>Khối cơ — Tháng 1: 100%</title></circle>
+            <circle cx="320" cy="117" r="5"><title>Khối cơ — Tháng 2: 106%</title></circle>
+            <circle cx="580" cy="73" r="5"><title>Khối cơ — Tháng 3: 114%</title></circle>
+          </g>
+
+          <text class="chart-end-label" x="592" y="253">82%</text>
+          <text class="chart-end-label" x="592" y="77">114%</text>
+        </svg>
+      </div>
+
+      <div class="chart-legend">
+        <span class="legend-item"><i class="legend-swatch swatch-muscle"></i>Khối cơ</span>
+        <span class="legend-item"><i class="legend-swatch swatch-fat"></i>Mỡ cơ thể</span>
+      </div>
+
+      <table class="sr-only">
+        <caption>Thay đổi mỡ cơ thể và khối cơ theo tháng, so với tháng 1 (%)</caption>
+        <thead><tr><th>Tháng</th><th>Mỡ cơ thể (%)</th><th>Khối cơ (%)</th></tr></thead>
+        <tbody>
+          <tr><td>Tháng 1</td><td>100</td><td>100</td></tr>
+          <tr><td>Tháng 2</td><td>92</td><td>106</td></tr>
+          <tr><td>Tháng 3</td><td>82</td><td>114</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <section id="about" class="section about">
     <div class="container">
       <h2>Về Youfit Private Fitness</h2>
