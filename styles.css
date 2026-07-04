@@ -89,6 +89,7 @@ a { color: inherit; text-decoration: none; }
 .logo {
   display: inline-flex;
   align-items: center;
+  gap: 12px;
 }
 .logo img {
   height: 44px;
@@ -97,6 +98,24 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   border: 1px solid var(--border);
   display: block;
+  flex-shrink: 0;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.logo-text strong {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.03em;
+}
+.logo-text small {
+  font-weight: 500;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 .nav {
   display: flex;
